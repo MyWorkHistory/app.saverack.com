@@ -25,12 +25,6 @@ for (const dir of envDirs) {
 
 const require = createRequire(import.meta.url);
 
-// Node 14: global AbortController is missing; next/font/google and some loaders need it at build time.
-if (typeof globalThis.AbortController === "undefined") {
-  const { AbortController } = require("abort-controller");
-  globalThis.AbortController = AbortController;
-}
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
