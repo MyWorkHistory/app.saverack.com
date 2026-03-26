@@ -35,9 +35,11 @@ if (typeof globalThis.AbortController === "undefined") {
 const nextConfig = {
   experimental: {
     appDir: true,
+    // Prisma must run from node_modules; bundling it breaks schema.prisma resolution during `next build` (collecting page data).
+    serverComponentsExternalPackages: ["@prisma/client", "@crm/db", "prisma"],
   },
   transpilePackages: ["@crm/db"],
-  webpack(config) {
+  webpack(config, { isServer }) {
     const svgr = require.resolve("@svgr/webpack");
 
     config.module.rules.push({
@@ -45,6 +47,10 @@ const nextConfig = {
       issuer: /\.[jt]sx?$/,
       use: [svgr],
     });
+
+    if (isServer) {
+      config.externals.push("@prisma/client", "prisma");
+    }
 
     return config;
   },

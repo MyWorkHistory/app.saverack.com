@@ -1,5 +1,7 @@
 generator client {
   provider = "prisma-client-js"
+  // Always generate into the monorepo root so @prisma/client resolves the same from apps/web and Next’s bundle can find the engine/schema layout.
+  output   = "../../../node_modules/.prisma/client"
 }
 
 datasource db {
