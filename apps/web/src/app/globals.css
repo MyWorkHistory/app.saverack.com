@@ -1,11 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /*
   Keep legacy border defaults closer to Tailwind v3 behavior.
+  Outfit is loaded via @import above (not next/font/google) so Node 14 builds avoid AbortController.
 */
 @layer base {
+  :root {
+    --font-outfit: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  }
   *,
   ::after,
   ::before,

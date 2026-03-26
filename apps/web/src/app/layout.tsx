@@ -1,11 +1,6 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
-
-const outfit = Outfit({
-  subsets: ["latin"],
-});
 
 /** Tab icons from `public/favicon.ico`, `public/icon.png`, `public/apple-icon.png` (regenerate: `npm run favicon -w @crm/web`). */
 export const metadata: Metadata = {
@@ -22,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.className} h-full antialiased`}>
+    <html lang="en" className="h-full antialiased">
       <body
         className="relative z-1 min-h-full flex flex-col bg-gray-50 font-normal dark:bg-gray-900"
         suppressHydrationWarning
