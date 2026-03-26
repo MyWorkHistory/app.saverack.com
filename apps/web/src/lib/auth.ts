@@ -103,8 +103,9 @@ export const authOptions: NextAuthOptions = {
     },
     async session({ session, token }) {
       if (token?.sub) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (session as any).user.id = token.sub;
+        if (session.user) {
+          (session.user as { id?: string }).id = token.sub;
+        }
       }
       return session;
     },

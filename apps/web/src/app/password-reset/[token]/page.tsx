@@ -8,9 +8,10 @@ import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function PasswordResetConfirmPage() {
-  const params = useParams<{ token: string }>();
+  const params = useParams();
   const router = useRouter();
-  const token = params.token;
+  const tokenParam = params?.token;
+  const token = Array.isArray(tokenParam) ? tokenParam[0] : tokenParam;
 
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");

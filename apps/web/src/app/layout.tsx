@@ -7,7 +7,7 @@ const outfit = Outfit({
   subsets: ["latin"],
 });
 
-/** Tab icons from `public/favicon.ico`, `src/app/icon.png`, `src/app/apple-icon.png` (regenerate: `npm run favicon -w @crm/web`). */
+/** Tab icons from `public/favicon.ico`, `public/icon.png`, `public/apple-icon.png` (regenerate: `npm run favicon -w @crm/web`). */
 export const metadata: Metadata = {
   title: {
     default: "SaveRack",

@@ -22,7 +22,6 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     const saved = localStorage.getItem("theme") as Theme | null;
     if (saved === "dark" || saved === "light") {
       // Intentional: align client with localStorage after hydration (server always rendered "light").
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- see above
       setTheme(saved);
     }
   }, []);

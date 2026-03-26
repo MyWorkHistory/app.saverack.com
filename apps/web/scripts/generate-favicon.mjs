@@ -37,7 +37,7 @@ async function main() {
   const ico = await toIco([buf16, buf32, buf48]);
   writeFileSync(join(APP_ROOT, "public", "favicon.ico"), ico);
 
-  writeFileSync(join(APP_ROOT, "src", "app", "icon.png"), buf32);
+  writeFileSync(join(APP_ROOT, "public", "icon.png"), buf32);
 
   const apple = await sharp(LOGO)
     .resize(180, 180, {
@@ -46,9 +46,9 @@ async function main() {
     })
     .png()
     .toBuffer();
-  writeFileSync(join(APP_ROOT, "src", "app", "apple-icon.png"), apple);
+  writeFileSync(join(APP_ROOT, "public", "apple-icon.png"), apple);
 
-  console.log("Favicon generated: public/favicon.ico, src/app/icon.png, src/app/apple-icon.png");
+  console.log("Favicon generated: public/favicon.ico, public/icon.png, public/apple-icon.png");
 }
 
 main().catch((err) => {

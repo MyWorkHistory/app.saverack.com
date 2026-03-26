@@ -12,7 +12,7 @@ const PatchSchema = z.object({
 
 export async function PATCH(
   req: Request,
-  context: { params: Promise<{ id: string }> },
+  context: { params: { id: string } },
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -20,7 +20,7 @@ export async function PATCH(
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { id } = await context.params;
+    const { id } = context.params;
     let body: unknown;
     try {
       body = await req.json();
@@ -58,7 +58,7 @@ export async function PATCH(
 
 export async function DELETE(
   _req: Request,
-  context: { params: Promise<{ id: string }> },
+  context: { params: { id: string } },
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -66,7 +66,7 @@ export async function DELETE(
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { id } = await context.params;
+    const { id } = context.params;
     const sessionUserId = (session.user as { id?: string }).id;
     if (sessionUserId && sessionUserId === id) {
       return NextResponse.json(

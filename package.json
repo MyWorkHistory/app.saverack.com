@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "private": true,
+  "engines": {
+    "node": ">=14.18.0"
+  },
+  "devDependencies": {
+    "@prisma/client": "4.16.2",
+    "prisma": "4.16.2"
+  },
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -15,6 +22,7 @@
     "db:migrate": "npm run db:migrate -w @crm/db",
     "db:studio": "npm run db:studio -w @crm/db",
     "db:seed": "npm run db:seed -w @crm/db",
+    "postinstall": "npm run db:generate",
     "fetch-assets": "node scripts/fetch-saverack-assets.mjs"
   },
   "keywords": [],

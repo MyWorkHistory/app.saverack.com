@@ -79,7 +79,7 @@ export function AdminHeaderBar() {
           <select
             id="header-account"
             defaultValue="all"
-            className="h-10 w-full appearance-none rounded-lg border border-gray-300 bg-white py-2 pr-9 pl-3 text-sm text-gray-800 shadow-theme-xs focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
+            className="h-10 w-full appearance-none rounded-lg border border-gray-300 bg-white py-2 pr-9 pl-3 text-sm text-gray-800 shadow-theme-xs focus:border-brand-300 focus:outline-none focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
           >
             <option value="all">All Accounts</option>
           </select>
@@ -92,7 +92,7 @@ export function AdminHeaderBar() {
             placeholder="Search Order#"
             value={orderQuery}
             onChange={(e) => setOrderQuery(e.target.value)}
-            className="h-10 min-w-[140px] flex-1 rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-gray-500"
+            className="h-10 min-w-[140px] flex-1 rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-none focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-gray-500"
           />
           <button
             type="button"
@@ -105,7 +105,7 @@ export function AdminHeaderBar() {
             placeholder="Search Inventory"
             value={inventoryQuery}
             onChange={(e) => setInventoryQuery(e.target.value)}
-            className="h-10 min-w-[140px] flex-1 rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-gray-500"
+            className="h-10 min-w-[140px] flex-1 rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-none focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-gray-500"
           />
           <button
             type="button"
