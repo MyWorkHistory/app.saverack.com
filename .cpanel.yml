@@ -1,0 +1,4 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/app.saverack.com
+    - /bin/rsync -av --exclude=".git" ./ $DEPLOYPATH
