@@ -16,7 +16,7 @@
     }
   },
   "scripts": {
-    "db:generate": "dotenv -e ../../.env -e ../../.env.local -e ../../apps/web/.env.local -- prisma generate",
+    "db:generate": "node ../../scripts/db-generate.cjs",
     "db:migrate": "dotenv -e ../../.env -e ../../.env.local -e ../../apps/web/.env.local -- prisma migrate dev",
     "db:studio": "dotenv -e ../../.env -e ../../.env.local -e ../../apps/web/.env.local -- prisma studio",
     "db:seed": "dotenv -e ../../.env -e ../../.env.local -e ../../apps/web/.env.local -- prisma db seed"
