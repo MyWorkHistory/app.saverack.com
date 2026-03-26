@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "prebuild": "npm --prefix ../.. run db:generate",
+    "prebuild": "npm --prefix ../.. run db:generate && node ../../scripts/patch-next-for-node14.cjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

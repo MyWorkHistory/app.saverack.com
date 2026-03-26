@@ -22,7 +22,7 @@
     "db:migrate": "npm run db:migrate -w @crm/db",
     "db:studio": "npm run db:studio -w @crm/db",
     "db:seed": "npm run db:seed -w @crm/db",
-    "postinstall": "npm run db:generate",
+    "postinstall": "npm run db:generate && node scripts/patch-next-for-node14.cjs",
     "fetch-assets": "node scripts/fetch-saverack-assets.mjs"
   },
   "keywords": [],
