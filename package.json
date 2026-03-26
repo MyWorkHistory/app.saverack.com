@@ -1,0 +1,23 @@
+{
+  "name": "new-folder",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @crm/web",
+    "build": "npm run build -w @crm/web",
+    "lint": "npm run lint -w @crm/web",
+    "db:generate": "npm run db:generate -w @crm/db",
+    "db:migrate": "npm run db:migrate -w @crm/db",
+    "db:studio": "npm run db:studio -w @crm/db",
+    "db:seed": "npm run db:seed -w @crm/db",
+    "fetch-assets": "node scripts/fetch-saverack-assets.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED"
+}

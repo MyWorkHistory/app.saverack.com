@@ -1,0 +1,106 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserStatus {
+  PENDING
+  ACTIVE
+  INACTIVE
+}
+
+model User {
+  id              String     @id @default(cuid())
+  fullName        String?
+  email           String     @unique
+  emailVerifiedAt DateTime?
+  passwordHash    String
+  status          UserStatus @default(PENDING)
+  legacyRoleCode  Int?
+  lastLoginAt     DateTime?
+
+  // Legacy fields we keep for parity/migration
+  legacyApiToken        String?
+  legacyCustomersBlob   String?
+  legacyIsEmail         Boolean?   @default(false)
+  legacyUpdatedByUserId String?
+  legacyUserType        String?
+  legacyIsDeletedCode   Int?
+  legacyAvatarPath      String?
+  legacyIpAddress       String?
+  legacyOwner           String?
+
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+
+  roles           UserRole[]
+  legacyAcl       UserLegacyAcl?
+  resetTokens     PasswordResetToken[]
+
+  @@index([createdAt])
+}
+
+model Role {
+  id          String           @id @default(cuid())
+  code        String           @unique // e.g. "ADMIN"
+  name        String
+  description String?
+
+  users       UserRole[]
+  permissions RolePermission[]
+}
+
+model Permission {
+  id          String           @id @default(cuid())
+  code        String           @unique // e.g. "users.read"
+  name        String
+  description String?
+
+  roles       RolePermission[]
+}
+
+model UserRole {
+  userId String
+  roleId String
+
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role   Role @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@id([userId, roleId])
+}
+
+model RolePermission {
+  roleId       String
+  permissionId String
+
+  role         Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission   Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@id([roleId, permissionId])
+}
+
+model UserLegacyAcl {
+  userId String  @id
+  flags  Json
+
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model PasswordResetToken {
+  id          String   @id @default(cuid())
+  userId      String
+  tokenHash   String   @unique
+  expiresAt   DateTime
+  usedAt      DateTime?
+  createdAt   DateTime @default(now())
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
