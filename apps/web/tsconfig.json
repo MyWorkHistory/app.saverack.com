@@ -28,6 +28,10 @@
       ],
       "@crm/db": [
         "../../packages/db/src/index.ts"
+      ],
+      "@prisma/client": [
+        "../../node_modules/@prisma/client",
+        "./node_modules/@prisma/client"
       ]
     },
     "forceConsistentCasingInFileNames": true
